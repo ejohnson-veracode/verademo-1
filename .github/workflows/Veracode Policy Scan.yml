@@ -1,4 +1,4 @@
-name: Veracode Policy Scan
+name: Veracode Sandbox Scan
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
         name: verademo.war
         path: target/verademo.war
             
-    # Upload and Scan with Veracode (Policy scan)
+    # Upload and Scan with Veracode Sandbox
     - name: Veracode Upload and Scan Action Step
       uses: veracode/veracode-uploadandscan-action@master
       id: upload_and_scan
@@ -43,5 +43,5 @@ jobs:
         filepath: 'target/verademo.war'
         vid: '${{ secrets.VERACODE_API_ID }}'
         vkey: '${{ secrets.VERACODE_API_KEY }}'
-        scantimeout: 20
-
+        sandboxname: 'test sandbox 3'
+        scantimeout: 30
